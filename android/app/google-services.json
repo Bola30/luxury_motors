@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "166970636469",
+    "project_id": "luxury-motors-d754c",
+    "storage_bucket": "luxury-motors-d754c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166970636469:android:0dcc4223f1d845b143e6fc",
+        "android_client_info": {
+          "package_name": "com.example.luxury_motors"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdymui9-evahmlkArLgbl_CWRCyND4lsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
