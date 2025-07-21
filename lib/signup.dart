@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luxury_motors/login.dart';
-import 'package:luxury_motors/shop.dart';
+import 'package:luxury_motors/homePage.dart';
 import 'package:luxury_motors/widgets/customButton.dart';
 import 'package:luxury_motors/widgets/customtextfeild.dart';
 
@@ -19,7 +19,7 @@ class SignupPage extends StatelessWidget {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => ShopPage()),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
       showDialog(
@@ -71,7 +71,7 @@ class SignupPage extends StatelessWidget {
             SizedBox(height: 20),
             CustomButton(
               text: 'Register',
-              onPressed: () => signUp(context), color: Colors.yellow,
+              onPressed: () => signUp(context), color: Colors.yellow, textColor: Colors.black,
             ),
             SizedBox(height: 20),
             Row(

@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
-  final Color color ; // Default color
+  final VoidCallback? onPressed;
+  final Color color;
+  final Color textColor;
 
-  CustomButton({
+  const CustomButton({
     required this.text,
-    required this.onPressed, required this.color, 
+    required this.onPressed,
+    required this.color,
+    required this.textColor,
+    super.key,
   });
 
   @override
@@ -15,25 +19,22 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: SizedBox(
-        width: double.infinity, // Make the button full width
+        width: double.infinity,
         child: ElevatedButton(
-          
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: color, // Background color
+            backgroundColor: color,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // Rounded corners
+              borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           ),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 16, color: Colors.black),
+            style: TextStyle(fontSize: 16, color: textColor),
           ),
         ),
       ),
     );
   }
-
-
 }

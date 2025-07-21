@@ -19,15 +19,22 @@ class Admintextfeild extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration:InputDecoration(
+                      
+          fillColor: Colors.white.withOpacity(0.8),
                       hintText: '$hintText',
                       prefixIcon:icon,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: Colors.white.withOpacity(0.5)),
+                        borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.yellow, width: 2),
+                        borderSide: BorderSide(color: Colors.black, width: 2),
                       ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
+                      ),
+                      
 /*                       fillColor: Colors.white.withOpacity(0.8),
  */                      filled: true,
                     ),            

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luxury_motors/shop.dart';
+import 'package:luxury_motors/homePage.dart';
 import 'package:luxury_motors/signup.dart';
 import 'package:luxury_motors/widgets/customButton.dart';
 import 'package:luxury_motors/widgets/customtextfeild.dart';
@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => ShopPage()),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
       showDialog(
@@ -67,8 +67,10 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             CustomButton(
-              text: 'Log In',
-              onPressed: () => signIn(context), color: Colors.yellow ,
+              color: Colors.yellow,
+              textColor: Colors.black,                    
+              text: 'LogIn',
+              onPressed: () => signIn(context),
             ),
             SizedBox(height: 10),
             Row(
