@@ -64,14 +64,17 @@ class CarCard extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      
+
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     engine,
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: Colors.white70,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -82,7 +85,7 @@ class CarCard extends StatelessWidget {
                         '\$${price.toString()}',
                         style: const TextStyle(
                           color: Colors.deepPurple,
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

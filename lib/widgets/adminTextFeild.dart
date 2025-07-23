@@ -7,7 +7,7 @@ class Admintextfeild extends StatelessWidget {
 
   const Admintextfeild({
     super.key,
-    required this.icon ,
+    required this.icon,
     required this.controller,
     required this.hintText,
   });
@@ -17,30 +17,31 @@ class Admintextfeild extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: TextFormField(
+        style: const TextStyle(color: Colors.black),
         controller: controller,
-        decoration:InputDecoration(
-                      
+        decoration: InputDecoration(
+          hintStyle: const TextStyle(color: Colors.black),
           fillColor: Colors.white.withOpacity(0.8),
-                      hintText: '$hintText',
-                      prefixIcon:icon,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 2),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
-                      ),
-                      
-/*                       fillColor: Colors.white.withOpacity(0.8),
- */                      filled: true,
-                    ),            
+          hintText: '$hintText',
+          prefixIcon: icon,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Colors.white.withOpacity(0.8)),
+          ),
+
+          /*                       fillColor: Colors.white.withOpacity(0.8),
+ */
+          filled: true,
+        ),
         validator: (value) => value!.isEmpty ? 'Please enter $hintText' : null,
       ),
     );
   }
-  
 }

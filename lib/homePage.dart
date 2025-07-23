@@ -16,16 +16,7 @@ class _HomePageState extends State<HomePage> {
   String selectedBrand = 'All';
 
   final List<String> brands = [
-    'All',
-    'BMW',
-    'Mercedes',
-    'Audi',
-    'Lamborghini',
-    'GAC',
-    'Toyota',
-    'Nissan',
-    'Hyundai',
-    'Kia',
+    'All', 'BMW', 'Mercedes', 'Audi', 'GAC', 'Toyota', 'Nissan', 'Hyundai', 'Kia',
   ];
 
   @override
@@ -66,40 +57,44 @@ class _HomePageState extends State<HomePage> {
                         'Egypt, Cairo',
                         style: TextStyle(fontSize: 16, color: Colors.white70),
                       ),
-
                       IconButton(
                         icon: Icon(
+                          size: 25,
                           CupertinoIcons.add_circled,
-                          color: Colors.white70,
+                          color: Colors.purple,
                         ),
                         onPressed: () {
- Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => const AdminPage(),
-                                      ),);
-                          },
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const AdminPage(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
 
                   // Greeting
-                  Row(
-                    children: [
-                      const Text(
-                        "Hello, ",
-                        style: TextStyle(fontSize: 35, color: Colors.white70),
-                      ),
-                      const Text(
-                        "Ready to ride?",
-                        style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Hello, ",
+                          style: TextStyle(fontSize: 35, color: Colors.white70),
                         ),
-                      ),
-                    ],
+                        TextSpan(
+                          text: "Ready to ride?",
+                          style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+
                   const SizedBox(height: 5),
                   const Text(
                     "Welcome to Luxury Motors",
@@ -115,47 +110,37 @@ class _HomePageState extends State<HomePage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children:
-                          brands.map((brand) {
-                            final isSelected = brand == selectedBrand;
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 4.0,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    selectedBrand = brand;
-                                  });
-                                },
-                                child: CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor:
-                                      isSelected
-                                          ? Colors.deepOrange
-                                          : Colors.deepPurple,
-                                  child: Text(
-                                    brand,
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                      children: brands.map((brand) {
+                        final isSelected = brand == selectedBrand;
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedBrand = brand;
+                              });
+                            },
+                            child: Chip(
+                              label: Text(
+                                brand,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
                                 ),
                               ),
-                            );
-                          }).toList(),
+                              backgroundColor: isSelected ? Colors.purpleAccent : Colors.deepPurple,
+                            ),
+                          ),
+                        );
+                      }).toList(),
                     ),
                   ),
+
                   const SizedBox(height: 20),
 
                   // Car Grid
                   StreamBuilder(
-                    stream:
-                        FirebaseFirestore.instance
-                            .collection('cars')
-                            .snapshots(),
+                    stream: FirebaseFirestore.instance.collection('cars').snapshots(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
@@ -170,35 +155,29 @@ class _HomePageState extends State<HomePage> {
                       }
 
                       final allCars = snapshot.data!.docs;
-                      final filteredCars =
-                          selectedBrand == 'All'
-                              ? allCars
-                              : allCars
-                                  .where(
-                                    (doc) =>
-                                        doc['brand']?.toLowerCase() ==
-                                        selectedBrand.toLowerCase(),
-                                  )
-                                  .toList();
+                      final filteredCars = selectedBrand == 'All'
+                          ? allCars
+                          : allCars.where((doc) => doc['brand']?.toLowerCase() == selectedBrand.toLowerCase()).toList();
 
                       return GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 12,
-                              crossAxisSpacing: 12,
-                              childAspectRatio: 0.82,
-                            ),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 12,
+                          crossAxisSpacing: 12,
+                          childAspectRatio: 0.82,
+                        ),
                         itemCount: filteredCars.length,
                         itemBuilder: (context, index) {
-                          final car = filteredCars[index];
+                          final DocumentSnapshot car = filteredCars[index];
+                          final carData = car.data() as Map<String, dynamic>;
+
                           return CarCard(
-                            imageUrl: car['image'],
-                            name: car['model'],
-                            engine: car['engine'],
-                            price: car['price'],
+                            imageUrl: carData['image'] ?? '',
+                            name: carData['model'] ?? '',
+                            engine: carData['engine'] ?? '',
+                            price: carData['price']?.toString() ?? '',
                             onTap: () {
                               Navigator.push(
                                 context,

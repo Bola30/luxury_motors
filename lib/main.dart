@@ -22,14 +22,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.black,
-        appBarTheme: AppBarTheme(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontStyle: FontStyle.italic),
+          bodyMedium: TextStyle(fontStyle: FontStyle.italic),
+          titleLarge: TextStyle(fontStyle: FontStyle.italic),
+          titleMedium: TextStyle(fontStyle: FontStyle.italic),
+          labelLarge: TextStyle(fontStyle: FontStyle.italic),
+        ),
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home:  LoginPage(),
     );
   }
 }

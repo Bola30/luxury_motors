@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:luxury_motors/widgets/callerSellerButton.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatelessWidget {
   final DocumentSnapshot carData;
@@ -16,6 +18,10 @@ class DetailsPage extends StatelessWidget {
         title: Text(data['model'] ?? 'Car Details'),
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
+        centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.deepPurple, // Change the color of the back button
+        ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -69,10 +75,7 @@ class DetailsPage extends StatelessWidget {
               // Engine
               Text(
                 "Engine: ${data['engine'] ?? ''}",
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white70,
-                ),
+                style: const TextStyle(fontSize: 18, color: Colors.white70),
               ),
               const SizedBox(height: 10),
 
@@ -89,6 +92,15 @@ class DetailsPage extends StatelessWidget {
                   "Seats: ${data['seats']}",
                   style: const TextStyle(fontSize: 18, color: Colors.white70),
                 ),
+                SizedBox(height: 20),
+                
+if (data.containsKey('phone'))
+  Center(
+    child:CallSellerButton(
+      phoneNumber: data['phone'],
+    ),
+  ),
+
 
               const SizedBox(height: 20),
 
@@ -96,11 +108,9 @@ class DetailsPage extends StatelessWidget {
               if (data.containsKey('description'))
                 Text(
                   data['description'],
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white60,
-                  ),
+                  style: const TextStyle(fontSize: 16, color: Colors.white70 , fontWeight: FontWeight.bold),
                 ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
