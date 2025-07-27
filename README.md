@@ -1,16 +1,22 @@
-# luxury_motors
+# 🚗 Luxury Motors
 
-A new Flutter project.
+A car marketplace app where users can browse cars for sale or offer their cars to sell.  
+Built with Flutter and integrated with Firebase services.
 
-## Getting Started
+## 🛠️ Features
+- Firebase Authentication (Register & Login)
+- Browse cars by categories
+- Post car ads with image & details
+- View car details page
+- Elegant, animated UI with shadows and smooth transitions
 
-This project is a starting point for a Flutter application.
+## 📦 Technologies
+- Flutter
+- Firebase Auth & Firestore
+- Dart
 
-A few resources to get you started if this is your first Flutter project:
+## 🎥 Demo Video
+[Watch Demo](https://drive.google.com/file/d/1d_PkWhoKdV-LIwhRLEly_aCD4RZUktrQ/view?usp=drivesdk)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📂 GitHub Repository
+[Luxury Motors Repo](https://github.com/Bola30/luxury_motors)
